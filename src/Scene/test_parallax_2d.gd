@@ -14,8 +14,8 @@ func _ready() -> void:
 		var lconfig:LayerConfig = preload("res://Assets/LayerConfig/layer_config.tscn").instantiate()
 		lconfig.layer_name = pl.name
 		lconfig.parallaxLayer = pl
-		lconfig.scale_x = remap(i,10,0,2,0)
-		lconfig.scale_y = remap(i,10,0,2,0)
+		lconfig.scale_x = remap(i,10,0,1,0)
+		lconfig.scale_y = remap(i,10,0,1,0)
 		v_box_container.add_child(lconfig)
 		lconfig.visible = false
 		configList.append(lconfig)
@@ -39,9 +39,12 @@ func _on_open_dir_text_changed(new_text: String) -> void:
 		var sprite:Sprite2D = Sprite2D.new()
 		sprite.texture = texture
 		parallaxList[index].add_child(sprite)
-		configList[index].mirroring_x = img.get_size().x
-		#configList[index].offset_x = img.get_size().x*2
-		#configList[index].offset_y = img.get_size().y
+		sprite = Sprite2D.new()
+		sprite.texture = texture
+		sprite.position.x = img.get_size().x
+		parallaxList[index].add_child(sprite)
+		
+		configList[index].mirroring_x = img.get_size().x*2
 		configList[index].update_var2node()
 		index += 1
 		if index >= 11:

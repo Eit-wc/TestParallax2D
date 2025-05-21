@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://7dc7p4ic7j4t" path="res://Assets/FileBrowser/open_file.tscn" id="1_l5lhk"]
 [ext_resource type="Script" uid="uid://dchmv7bpr2vk0" path="res://Scene/test_parallax_2d.gd" id="1_nibxk"]
 [ext_resource type="Script" uid="uid://dqn8p21ticwc3" path="res://Scene/camera_2d.gd" id="2_72rvw"]
-[ext_resource type="Texture2D" uid="uid://du4l03frhbkgg" path="res://Assets/Sample/01_ground.png" id="3_6qlwd"]
+[ext_resource type="Texture2D" uid="uid://dxsc4gr25jm2o" path="res://Assets/sampleChar/0001.png" id="3_6qlwd"]
 
 [node name="TestParallax2D" type="Node2D"]
 script = ExtResource("1_nibxk")
@@ -11,7 +11,13 @@ script = ExtResource("1_nibxk")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_72rvw")
 
+[node name="0001" type="Sprite2D" parent="Camera2D"]
+position = Vector2(-8, 1)
+texture = ExtResource("3_6qlwd")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -400)
+transform = Transform2D(1, 0, 0, 1, 0, -400)
 
 [node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -35,10 +41,6 @@ script = ExtResource("2_72rvw")
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(2048, 0)
-
-[node name="01Ground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
-position = Vector2(-86, 104)
-texture = ExtResource("3_6qlwd")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
