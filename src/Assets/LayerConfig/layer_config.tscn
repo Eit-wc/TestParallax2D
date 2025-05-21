@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://cglj623mwqb3j"]
+
+[ext_resource type="Script" uid="uid://tqr4k162qc37" path="res://Assets/LayerConfig/layer_config.gd" id="1_efkgn"]
+
+[node name="LayerConfig" type="PanelContainer"]
+script = ExtResource("1_efkgn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LayerName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Layer 0"
+horizontal_alignment = 1
+
+[node name="Scale" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Scale"]
+layout_mode = 2
+text = "Scale:"
+
+[node name="X" type="LineEdit" parent="VBoxContainer/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "X"
+
+[node name="Y" type="LineEdit" parent="VBoxContainer/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Y"
+
+[node name="Offset" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Offset"]
+layout_mode = 2
+text = "Offset:"
+
+[node name="X" type="LineEdit" parent="VBoxContainer/Offset"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "X"
+
+[node name="Y" type="LineEdit" parent="VBoxContainer/Offset"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Y"
+
+[node name="Mirroring" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Mirroring"]
+layout_mode = 2
+text = "Mirror:"
+
+[node name="X" type="LineEdit" parent="VBoxContainer/Mirroring"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "X"
+
+[node name="Y" type="LineEdit" parent="VBoxContainer/Mirroring"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Y"

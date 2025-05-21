@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://cia5br3a2jyqp"]
+
+[ext_resource type="PackedScene" uid="uid://7dc7p4ic7j4t" path="res://Assets/FileBrowser/open_file.tscn" id="1_l5lhk"]
+[ext_resource type="Script" uid="uid://dchmv7bpr2vk0" path="res://Scene/test_parallax_2d.gd" id="1_nibxk"]
+[ext_resource type="Script" uid="uid://dqn8p21ticwc3" path="res://Scene/camera_2d.gd" id="2_72rvw"]
+[ext_resource type="Texture2D" uid="uid://du4l03frhbkgg" path="res://Assets/Sample/01_ground.png" id="3_6qlwd"]
+
+[node name="TestParallax2D" type="Node2D"]
+script = ExtResource("1_nibxk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_72rvw")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(2048, 0)
+
+[node name="01Ground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2(-86, 104)
+texture = ExtResource("3_6qlwd")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 227.0
+offset_bottom = -14.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Control/ScrollContainer"]
+layout_mode = 2
+
+[node name="OpenDir" parent="HUD/Control/ScrollContainer/VBoxContainer" instance=ExtResource("1_l5lhk")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "Open Parallax Dir"
+
+[node name="Label" type="Label" parent="HUD/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Move Speed"
+
+[node name="CameraSpeed" type="HSlider" parent="HUD/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[connection signal="text_changed" from="HUD/Control/ScrollContainer/VBoxContainer/OpenDir" to="." method="_on_open_dir_text_changed"]
+[connection signal="value_changed" from="HUD/Control/ScrollContainer/VBoxContainer/CameraSpeed" to="Camera2D" method="_on_camera_speed_value_changed"]
+
+[editable path="HUD/Control/ScrollContainer/VBoxContainer/OpenDir"]
