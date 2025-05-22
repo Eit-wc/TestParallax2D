@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="TestParallax2D"
+config/version="0.0.1"
 run/main_scene="uid://cia5br3a2jyqp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://qdu5l08dyxwe"
 
 [rendering]
 

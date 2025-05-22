@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cia5br3a2jyqp"]
+[gd_scene load_steps=6 format=3 uid="uid://cia5br3a2jyqp"]
 
 [ext_resource type="PackedScene" uid="uid://7dc7p4ic7j4t" path="res://Assets/FileBrowser/open_file.tscn" id="1_l5lhk"]
 [ext_resource type="Script" uid="uid://dchmv7bpr2vk0" path="res://Scene/test_parallax_2d.gd" id="1_nibxk"]
 [ext_resource type="Script" uid="uid://dqn8p21ticwc3" path="res://Scene/camera_2d.gd" id="2_72rvw"]
 [ext_resource type="Texture2D" uid="uid://dxsc4gr25jm2o" path="res://Assets/sampleChar/0001.png" id="3_6qlwd"]
+[ext_resource type="Script" uid="uid://chqwngl4e77ng" path="res://Scene/version.gd" id="5_lotox"]
 
 [node name="TestParallax2D" type="Node2D"]
 script = ExtResource("1_nibxk")
@@ -16,8 +17,8 @@ position = Vector2(-8, 1)
 texture = ExtResource("3_6qlwd")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2(0, -400)
-transform = Transform2D(1, 0, 0, 1, 0, -400)
+offset = Vector2(500, -400)
+transform = Transform2D(1, 0, 0, 1, 500, -400)
 
 [node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -78,7 +79,28 @@ text = "Move Speed"
 layout_mode = 2
 value = 50.0
 
+[node name="Version" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -31.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "V 0.0.0"
+script = ExtResource("5_lotox")
+
+[node name="TimerCheckFileUpdate" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="text_changed" from="HUD/Control/ScrollContainer/VBoxContainer/OpenDir" to="." method="_on_open_dir_text_changed"]
 [connection signal="value_changed" from="HUD/Control/ScrollContainer/VBoxContainer/CameraSpeed" to="Camera2D" method="_on_camera_speed_value_changed"]
+[connection signal="timeout" from="TimerCheckFileUpdate" to="." method="_on_timer_check_file_update_timeout"]
 
 [editable path="HUD/Control/ScrollContainer/VBoxContainer/OpenDir"]
